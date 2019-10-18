@@ -33,13 +33,10 @@ app.get('/list', (req, res) => {
 
 
 app.post('/list', (req, res) => {
-    console.log(req.body);
-
     pool.query(`INSERT INTO "to_do_list" ("task", "complete") 
     VALUES ($1, $2);`, [req.body.task, req.body.complete])
         .then(() => {
-
-            res.send(req.body);
+            res.sendStatus(200);
         })
         .catch((error) => {
             console.log('Error making select query', error);
