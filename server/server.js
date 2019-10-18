@@ -44,6 +44,16 @@ app.post('/list', (req, res) => {
         });
 });
 
+app.put('/list/:complete/:id', (req, res) => {
+    pool.query(`UPDATE "to_do_list" SET "complete"=$1 WHERE "id"=$2;`, [req.params.complete, req.params.id])
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('Error making PUT', error);
+            res.sendStatus(500);
+        })
+});
+
 
 
 

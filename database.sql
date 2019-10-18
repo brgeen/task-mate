@@ -8,3 +8,7 @@ CREATE TABLE to_do_list(
 INSERT INTO to_do_list("task", "complete")
 VALUES
    ('clean bathroom', 'false');
+
+UPDATE to_do_list
+SET "complete" = FALSE
+WHERE "id" = '2';
