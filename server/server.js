@@ -31,7 +31,6 @@ app.get('/list', (req, res) => {
         });
 });
 
-
 app.post('/list', (req, res) => {
     pool.query(`INSERT INTO "to_do_list" ("task", "complete") 
     VALUES ($1, $2);`, [req.body.task, req.body.complete])
@@ -54,11 +53,15 @@ app.put('/list/:complete/:id', (req, res) => {
         })
 });
 
-
-
-
-
-
+app.delete('/list/:id', (req, res) => {
+    pool.query(`DELETE FROM "to_do_list" WHERE "id"=$1;`, [req.params.id])
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('Error making GET', error);
+            res.sendStatus(500);
+        });
+});
 
 // --------------------------------------------------------------------------------->
 
