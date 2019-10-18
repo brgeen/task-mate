@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,30 @@
     <script src="../server.js"></script>
     <title>To Do List</title>
 </head>
+
 <body>
     <h1>To Do List</h1>
-    
+
+    <input id="task-input" type="text" placeholder="To Do">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Complete</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="task-table"></tbody>
+    </table>
+
+    <ul>
+        <li>Clean Bathroom<input type="checkbox"></li>
+
+
+    </ul>
+
 </body>
+
 </html>

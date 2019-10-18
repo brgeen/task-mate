@@ -5,7 +5,7 @@ function onReady() {
 }
 
 function addTask() {
-    
+
     $('#task-list').empty();
 
     $.ajax({
