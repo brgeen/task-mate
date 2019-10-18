@@ -20,6 +20,38 @@ pool.on('error', (error) => {
 
 //--------------------------------------------------------------------------------->
 
+app.get('/list', (req, res) => {
+    pool.query(`SELECT * FROM "to_do_list"`)
+        .then((result) => {
+            res.send(result.rows);
+        })
+        .catch((error) => {
+            console.log('Error making select query', error);
+            res.sendStatus(500);
+        });
+});
+
+
+app.post('/list', (req, res) => {
+    console.log(req.body);
+
+    pool.query(`INSERT INTO "to_do_list" ("task", "complete") 
+    VALUES ($1, $2);`, [req.body.task, req.body.complete])
+        .then(() => {
+
+            res.send(req.body);
+        })
+        .catch((error) => {
+            console.log('Error making select query', error);
+            res.sendStatus(500);
+        });
+});
+
+
+
+
+
+
 
 // --------------------------------------------------------------------------------->
 
