@@ -1,0 +1,30 @@
+{
+  "name": "weekend-sql-to-do-list",
+  "version": "1.0.0",
+  "description": "To Do List",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server/server.js",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brgeen/weekend-sql-to-do-list.git"
+  },
+  "keywords": [
+    "To",
+    "Do",
+    "List"
+  ],
+  "author": "Brooks Geenen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brgeen/weekend-sql-to-do-list/issues"
+  },
+  "homepage": "https://github.com/brgeen/weekend-sql-to-do-list#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "pg": "^7.12.1"
+  }
+}
