@@ -1,23 +1,21 @@
 $(document).ready(onReady);
 
 function onReady() {
-    console.log('jQuery Sourced');
     getTasks();
+    $('#submit-button').on('click', addTask);
 }
 
 function addTask() {
-
-    $('#task-list').empty();
 
     $.ajax({
         url: '/list',
         method: 'POST',
         data: {
-            task: leftSideOfOperator,
+            task: $('#task-input').val(),
             complete: false,
         }
     }).then(function (response) {
-        appendTasks();
+        getTasks();
     });
 };
 
@@ -40,11 +38,12 @@ function appendTasks(response) {
         $('#task-list').append(`
         <li>
         <data-id="${element.id}">
-        <input type="checkbox">${element.task} ${element.complete}
+        <input type="checkbox">${element.task} 
+        <data-complete="${element.complete}">
         </li>
     `);
     }
 
     $('#task-input').val('');
-    
+
 };
