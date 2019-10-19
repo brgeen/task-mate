@@ -3,29 +3,31 @@ $(document).ready(onReady);
 function onReady() {
     getTasks();
     $('#submit-button').on('click', addTask);
-    $('ul').on('click', '.delete-button', deleteTasks)
+    $('ul').on('click', '.delete-button', deleteTask)
+    $('ul').on('click', '.complete-button', completeTask)
 }
 
-function deleteTasks() {  
+function deleteTask() {
     $.ajax({
         type: 'DELETE',
         url: `/list/${$(this).parent().data('id')}`,
-      }).then(function (response) {
+    }).then(function (response) {
         getTasks();
-      }).catch(function (error) {
+    }).catch(function (error) {
         console.log('Error in POST', error)
-      });
+    });
 }
 
-function completedTasks() {  
+function completeTask() {
+
     $.ajax({
         type: 'PUT',
-        url: `/list/${$(this).parent().data('id')}`,
-      }).then(function (response) {
+        url: `/list/true/${$(this).parent().data('id')}`,
+    }).then(function (response) {
         getTasks();
-      }).catch(function (error) {
+    }).catch(function (error) {
         console.log('Error in POST', error)
-      });
+    });
 }
 
 function addTask() {
@@ -58,15 +60,26 @@ function getTasks() {
 function appendTasks(response) {
 
     for (element of response) {
-        $('.task-list').append(`
-        <li data-id="${element.id}" data-complete="${element.complete}">
-        ${element.task} 
-        <button class="delete-button">Delete</button>
-        <button class="complete-button">Completed</button>
-        </li>
-    `);
+
+        if (element.complete == true) {
+            $('.task-list').append(`
+            <li class="completed-item" data-id="${element.id}" data-complete="${element.complete}">
+            ${element.task} 
+            <button class="delete-button">Delete</button>
+            <button class="complete-button">Completed</button>
+            </li>
+        `);
+
+        } else {
+            $('.task-list').append(`
+            <li data-id="${element.id}" data-complete="${element.complete}">
+            ${element.task} 
+            <button class="delete-button">Delete</button>
+            <button class="complete-button">Completed</button>
+            </li>
+        `);
+        }
     }
-
     $('#task-input').val('');
-
 };
+
