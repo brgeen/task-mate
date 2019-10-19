@@ -36,12 +36,15 @@ function getTasks() {
 
 function appendTasks(response) {
 
-    for (let i = 0; i < response.length; i++) {
+    for (element of response) {
         $('#task-list').append(`
-        <li> <data-id="${response[i].id}"> <input type="checkbox">${response[i].task} ${response[i].complete}</li>
+        <li>
+        <data-id="${element.id}">
+        <input type="checkbox">${element.task} ${element.complete}
+        </li>
     `);
     }
 
     $('#task-input').val('');
-
+    
 };
