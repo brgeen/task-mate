@@ -12,6 +12,8 @@ const config = {
 }
 const pool = pg.Pool(config);
 
+import 'bootstrap';
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('server/public'))
 pool.on('error', (error) => {

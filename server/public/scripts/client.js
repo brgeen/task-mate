@@ -1,5 +1,7 @@
 $(document).ready(onReady);
 
+
+
 function onReady() {
     getTasks();
     $('#submit-button').on('click', addTask);
@@ -97,15 +99,15 @@ function appendTasks(response) { // as a table
         if (element[2] == true) { // this conditional checks to see if the item has been completed, if so, assigns it a completed-item class
             $('.task-list').prepend(`<tr class="completed-item" data-id="${element[0]}" data-complete="${element[2]}">
             <td>${element[1]}</td>
-            <td><button class="delete-button">Delete</button></td>
-            <td><button class="complete-button">Completed</button></td>
+            <td><button class="delete-button">delete</button></td>
+            <td><button class="complete-button">complete</button></td>
             </tr>
             `);
         } else {
             $('.task-list').prepend(`<tr data-id="${element[0]}" data-complete="${element[2]}">
             <td>${element[1]}</td>
-            <td><button class="delete-button">Delete</button></td>
-            <td><button class="complete-button">Completed</button></td>
+            <td><button class="delete-button">delete</button></td>
+            <td><button class="complete-button">complete</button></td>
             </tr>
             `);
         }

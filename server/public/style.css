@@ -1,6 +1,3 @@
-h1 {
-    color: gray;
-}
 
 ul {
     list-style: none;
@@ -8,5 +5,62 @@ ul {
 }
 
 .completed-item {
-    color: green;
+    text-decoration: line-through;
+}
+
+body {
+    margin-top: 25px;
+    font-family: Lucida, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#task-input {
+    width: 200px;;
+    padding: 10px;
+}
+
+#submit-button {
+    margin: 10px;
+    background-color: rgb(255, 201, 69)
+}
+
+button {
+    font-family: Lucida, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-variant-caps: all-small-caps;
+    background-color: #a6f7fab0;
+    border-style: solid;
+    transition-duration: 0.4s;
+    outline: none;
+    
+    
+    /* box-shadow: -1px 1px 1px 1px rgba(25, 25, 25, 0.1); */
+   
+}
+
+button:hover {
+    background-color: #d0fcfdb0;
+}
+
+h1 {
+    color: #222222de;
+    font-size: 38px;
+    line-height: 38px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#field-input {
+    width: 293px;
+    height: 40px;
+    margin-left: 11px;
+    padding: 20px;
+    font-size: 20px;
+    box-shadow: 0 0 5px 0 rgba(25, 25, 25, 0.1);
+    background-color: #eff8ffb2;
+    font-variant: small-caps;
 }
