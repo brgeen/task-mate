@@ -1,7 +1,5 @@
 $(document).ready(onReady);
 
-
-
 function onReady() {
     getTasks();
     $('#submit-button').on('click', addTask);
@@ -93,6 +91,3 @@ function appendTasks(response) { // as a table
     }
     $('#task-input').val('');
 };
-
-
-
