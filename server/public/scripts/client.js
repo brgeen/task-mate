@@ -35,16 +35,22 @@ function completeTask() {
 
 function addTask() {
 
-    $.ajax({
-        url: '/list',
-        method: 'POST',
-        data: {
-            task: $('#task-input').val(),
-            complete: false,
-        }
-    }).then(function (response) {
-        getTasks();
-    });
+    if ($('#task-input').val().length > 1) { // this checks for valid input
+        $('#task-input').attr('placeholder', 'To Do'); // this sets the placeholder back to normal 
+
+        $.ajax({
+            url: '/list',
+            method: 'POST',
+            data: {
+                task: $('#task-input').val(),
+                complete: false,
+            }
+        }).then(function (response) {
+            getTasks();
+        });
+    } else {
+        $('#task-input').attr('placeholder', 'Please enter a To Do item'); // this alert the user if nothing is input
+    }
 };
 
 function getTasks() {
@@ -59,33 +65,6 @@ function getTasks() {
     });
 };
 
-
-// function appendTasks(response) { // as a list
-
-//     for (element of response) {
-
-//         if (element.complete == true) {
-//             $('.task-list').append(`
-//             <li class="completed-item" data-id="${element.id}" data-complete="${element.complete}">
-//             ${element.task} 
-//             <button class="delete-button">Delete</button>
-//             <button class="complete-button">Completed</button>
-//             </li>
-//         `);
-
-//         } else {
-//             $('.task-list').append(`
-//             <li data-id="${element.id}" data-complete="${element.complete}">
-//             ${element.task} 
-//             <button class="delete-button">Delete</button>
-//             <button class="complete-button">Completed</button>
-//             </li>
-//         `);
-//         }
-//     }
-//     $('#task-input').val('');
-// };
-
 function appendTasks(response) { // as a table
     let sortedArray = []; // this array holds the sorted tasks by ID
 
@@ -99,15 +78,15 @@ function appendTasks(response) { // as a table
         if (element[2] == true) { // this conditional checks to see if the item has been completed, if so, assigns it a completed-item class
             $('.task-list').prepend(`<tr class="completed-item" data-id="${element[0]}" data-complete="${element[2]}">
             <td>${element[1]}</td>
-            <td><button class="delete-button">delete</button></td>
-            <td><button class="complete-button">complete</button></td>
+            <td><button class="delete-button">Delete</button></td>
+            <td><button class="complete-button">Complete</button></td>
             </tr>
             `);
         } else {
             $('.task-list').prepend(`<tr data-id="${element[0]}" data-complete="${element[2]}">
             <td>${element[1]}</td>
-            <td><button class="delete-button">delete</button></td>
-            <td><button class="complete-button">complete</button></td>
+            <td><button class="delete-button">Delete</button></td>
+            <td><button class="complete-button">Complete</button></td>
             </tr>
             `);
         }
